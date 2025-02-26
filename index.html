@@ -1,85 +1,206 @@
 <!DOCTYPE html>
-<html lang="pt-BR">    
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable-yes">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,400;1,500&display=swap" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quest Shoes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white py-3">
         <div class="container">
-            
-            <img src="./logo.png" alt="Logo da Quest Shoes" class="logo">
-            <nav class="menu">
-                <ul>
-                    <li><a href="#sobre-a-loja">Sobre</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                </ul>
-            </nav>
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="./logo.png" alt="Logo da Quest Shoes" class="logo" style="height: 50px;">
+                <nav>
+                    <ul class="list-unstyled d-flex gap-4 mb-0">
+                        <li><a href="#sobre-a-loja" class="text-white text-decoration-none">Sobre</a></li>
+                        <li><a href="#produtos" class="text-white text-decoration-none">Produtos</a></li>
+                        <li>
+                            <a href="#carrinho" class="text-white text-decoration-none">
+                                Carrinho (<span id="contador-carrinho">0</span>)
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <div class="conteudo">
-        <section class="container">
-            <div id="sobre-a-loja">
-                <img src="./lojaTenis.png" title="EBAC shoes" alt="Imagem sobre a loja de tenis">
-                <div>
-                    <h2>Sobre a Quest Shoes</h2>
-                    <p>
-                        Na Quest Shoes, acreditamos que cada passo é uma aventura e que os sapatos que você usa podem ser tão únicos quanto sua jornada. Somos uma loja especializada em calçados para nerds, geeks e amantes da cultura pop, onde estilo e paixão se encontram.
-                        
-                        Seja para conquistar mundos em uma sessão de RPG, desbravar convenções de cosplay ou simplesmente mostrar seu amor por séries, filmes e games no dia a dia, nossos sapatos são feitos para quem não tem medo de expressar sua personalidade.
-                        
-                        Na Quest Shoes, você não está apenas comprando um par de sapatos – está embarcando em uma missão para encontrar o calçado perfeito que combina com sua essência. Prepare-se para pisar forte e deixar sua marca no universo!</p>                    
+    <main class="container my-5">
+        <!-- Carousel -->
+        <section class="mb-5">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="max-width: 1000px; margin: 0 auto;">
+                <div class="carousel-inner">
+                    <!-- Imagem 1: Tênis Adidas -->
+                    <div class="carousel-item active">
+                        <img src="./tenisAdidas.webp" class="d-block w-100" alt="Tênis Adidas preto e branco" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <!-- Imagem 2: Tênis Nike -->
+                    <div class="carousel-item">
+                        <img src="./TenisNike.avif" class="d-block w-100" alt="Tênis Nike preto e branco" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <!-- Imagem 3: Tênis Vans -->
+                    <div class="carousel-item">
+                        <img src="./tenisVans.jpeg" class="d-block w-100" alt="Tênis Vans preto e branco" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <!-- Imagem 4: Tênis Vans Infantil -->
+                    <div class="carousel-item">
+                        <img src="./vansinfantil.jpg" class="d-block w-100" alt="Tênis Vans infantil" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <!-- Imagem 5: Melissa Rosa -->
+                    <div class="carousel-item">
+                        <img src="./melissarosa.jpg" class="d-block w-100" alt="Sandália Melissa Rosa" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <!-- Imagem 6: Chinelo Melissa -->
+                    <div class="carousel-item">
+                        <img src="./chinelomelissa.jpg" class="d-block w-100" alt="Chinelo Melissa" style="height: 400px; object-fit: cover;">
+                    </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próximo</span>
+                </button>
             </div>
         </section>
 
-        <section class="container">
-            <div id="produtos">
-                <h2>Produtos</h2>
-                <div class="item-produtos">
-                    <article class="tenis">
-                        <div>
-                            <img src="./tenisAdidas.webp" alt="Tênis, marca: Adidas, cor: preto e com o logo branco">
+        <!-- Seção Produtos e Carrinho -->
+        <div class="row">
+            <!-- Produtos -->
+            <section id="produtos" class="col-md-9 mb-5">
+                <h2 class="text-center mb-4">Produtos</h2>
+                <div class="row">
+                    <!-- Produto 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./tenisAdidas.webp" class="card-img-top" alt="Tênis Adidas preto e branco" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Tênis Adidas</h3>
+                                <p class="card-text">Tênis Adidas, disponível nos tamanhos: 37, 38, 39 e 40</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
                         </div>
-                        <h3>Tênis Adidas</h3>
-                        <p>Tênis Adidas, disponível nos tamanhos: 37, 38, 39 e 40</p> 
-                        <button type="button">Adicionar ao carrinho</button>
-                    </article>
-                    <article class="tenis">
-                        <div>
-                            <img src="./TenisNike.avif" alt="Tênis, marca: Nike, cor: preto com o logo branco">
+                    </div>
+                    <!-- Produto 2 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./TenisNike.avif" class="card-img-top" alt="Tênis Nike preto e branco" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Tênis Nike</h3>
+                                <p class="card-text">Tênis Nike, disponível nos tamanhos: 35, 37, 38 e 40</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
                         </div>
-                        <h3>Tênis Nike</h3>
-                        <p>Tênis Nike, disponível nos tamanhos: 35, 37, 38 e 40</p>
-                        <button type="button">Adicionar ao carrinho</button>
-                    </article>
-                    <article class="tenis">
-                        <div>
-                            <img src="./tenisVans.jpeg" alt="Tênis, marca Vans, cor: preta com risco branco ao lado">
+                    </div>
+                    <!-- Produto 3 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./tenisVans.jpeg" class="card-img-top" alt="Tênis Vans preto e branco" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Tênis Vans</h3>
+                                <p class="card-text">Tênis Vans, disponível nos tamanhos: 36, 37, 38, 41</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
                         </div>
-                        <h3>Tênis Vans</h3>
-                        <p>Tênis Vans, disponível nos tamanhos: 36, 37, 38, 41</p>
-                        <button type="button">Adicionar ao carrinho</button>
-                    </article>
-                    <article class="tenis">
-                        <div>
-                            <img src="./tenisVans.jpeg" alt="Tênis, marca Vans, cor: preta com risco branco ao lado">
+                    </div>
+                    <!-- Produto 4 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./vansinfantil.jpg" class="card-img-top" alt="Tênis Vans infantil" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Tênis Vans Infantil</h3>
+                                <p class="card-text">Tênis Vans infantil, disponível nos tamanhos: 36 ao 39</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
                         </div>
-                        <h3>Tênis Vans</h3>
-                        <p>Tênis Vans infantil, disponível nos tamanhos: 36 ao 39</p>
-                        <button type="button">Adicionar ao carrinho</button>
-                    </article>
+                    </div>
+                    <!-- Produto 5 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./melissarosa.jpg" class="card-img-top" alt="Sandália Melissa Rosa" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Melissa Rosa</h3>
+                                <p class="card-text">Sandália Melissa Rosa, disponível nos tamanhos: 36 ao 39</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Produto 6 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img src="./chinelomelissa.jpg" class="card-img-top" alt="Chinelo Melissa" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h3 class="card-title">Chinelo Melissa</h3>
+                                <p class="card-text">Chinelo Melissa, disponível nos tamanhos: 36 ao 39</p>
+                                <button class="btn btn-primary w-100">Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>                    
+            </section>
+
+            <!-- Carrinho -->
+            <aside id="carrinho" class="col-md-3">
+                <h2 class="text-center mb-4">Carrinho</h2>
+                <ul id="lista-carrinho" class="list-group mb-3">
+                    <!-- Itens do carrinho serão adicionados aqui via JavaScript -->
+                </ul>
+                <div class="text-end">
+                    <button id="limpar-carrinho" class="btn btn-danger">Limpar Carrinho</button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Seção Sobre e Formulário -->
+        <div class="row">
+            <!-- Sobre a Loja -->
+            <section id="sobre-a-loja" class="col-md-6 mb-5">
+                <h2>Sobre a Quest Shoes</h2>
+                <p>
+                    Na Quest Shoes, acreditamos que cada passo é uma aventura e que os sapatos que você usa podem ser tão únicos quanto sua jornada. Somos uma loja especializada em calçados para nerds, geeks e amantes da cultura pop, onde estilo e paixão se encontram.
+                    
+                    Seja para conquistar mundos em uma sessão de RPG, desbravar convenções de cosplay ou simplesmente mostrar seu amor por séries, filmes e games no dia a dia, nossos sapatos são feitos para quem não tem medo de expressar sua personalidade.
+                    
+                    Na Quest Shoes, você não está apenas comprando um par de sapatos – está embarcando em uma missão para encontrar o calçado perfeito que combina com sua essência. Prepare-se para pisar forte e deixar sua marca no universo!
+                </p>
+            </section>
+
+            <!-- Formulário de Fale Conosco -->
+            <section id="fale-conosco" class="col-md-6 mb-5">
+                <h2 class="text-center mb-4">Fale Conosco</h2>
+                <form id="form-fale-conosco">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comentario" class="form-label">Comentário:</label>
+                        <textarea class="form-control" id="comentario" name="comentario" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript Personalizado -->
+    <script src="./main.js"></script>
 </body>
 </html>
