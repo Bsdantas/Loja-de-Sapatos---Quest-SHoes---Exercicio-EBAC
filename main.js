@@ -1,4 +1,4 @@
-// Scroll suave para as seções
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault(); // Evita o comportamento padrão do link
@@ -8,10 +8,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Carrinho de Compras
+
 let carrinho = [];
 
-// Função para atualizar o contador do carrinho
+
 function atualizarContadorCarrinho() {
     const contador = document.getElementById('contador-carrinho');
     if (contador) {
@@ -19,11 +19,11 @@ function atualizarContadorCarrinho() {
     }
 }
 
-// Função para atualizar a lista de itens no carrinho
+
 function atualizarListaCarrinho() {
     const lista = document.getElementById('lista-carrinho');
     if (lista) {
-        lista.innerHTML = ''; // Limpa a lista atual
+        lista.innerHTML = ''; 
 
         carrinho.forEach((item, index) => {
             const li = document.createElement('li');
@@ -37,7 +37,7 @@ function atualizarListaCarrinho() {
     }
 }
 
-// Função para adicionar item ao carrinho
+
 function adicionarAoCarrinho(nome, tamanho) {
     const item = { nome, tamanho };
     carrinho.push(item);
@@ -46,7 +46,7 @@ function adicionarAoCarrinho(nome, tamanho) {
     alert(`${nome} adicionado ao carrinho!`);
 }
 
-// Função para remover item do carrinho
+
 function removerDoCarrinho(index) {
     if (index >= 0 && index < carrinho.length) {
         carrinho.splice(index, 1);
@@ -55,7 +55,7 @@ function removerDoCarrinho(index) {
     }
 }
 
-// Função para limpar o carrinho
+
 const botaoLimparCarrinho = document.getElementById('limpar-carrinho');
 if (botaoLimparCarrinho) {
     botaoLimparCarrinho.addEventListener('click', () => {
@@ -65,7 +65,7 @@ if (botaoLimparCarrinho) {
     });
 }
 
-// Adicionar evento de clique aos botões "Adicionar ao carrinho"
+
 document.querySelectorAll('.btn-primary').forEach(button => {
     button.addEventListener('click', () => {
         const card = button.closest('.card');
@@ -78,17 +78,17 @@ document.querySelectorAll('.btn-primary').forEach(button => {
     });
 });
 
-// Validação do formulário de "Fale Conosco"
+
 const form = document.getElementById('form-fale-conosco');
 if (form) {
     form.addEventListener('submit', (e) => {
         const email = form.querySelector('input[type="email"]');
         if (!email || !email.value.includes('@')) {
-            e.preventDefault(); // Impede o envio do formulário
+            e.preventDefault(); 
             alert('Por favor, insira um e-mail válido.');
         } else {
             alert('Mensagem enviada com sucesso!');
-            form.reset(); // Limpa o formulário após o envio
+            form.reset(); 
         }
     });
 }
